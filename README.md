@@ -14,8 +14,8 @@ Esta es una API REST creada con Elixir y Phoenix que permite ingresar transaccio
 ### Paso 1: Clonar el Repositorio
 
 ```sh
-git clone <URL_DEL_REPOSITORIO>
-cd <NOMBRE_DEL_REPOSITORIO>
+git clone https://github.com/cjmont/elixir-csv-transactions-services-api
+cd elixir-csv-transactions-services-api
 ```
 
 
