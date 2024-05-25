@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: transactions_api_dev
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - transactions_network
+
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "8098:8098"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: "ecto://postgres:postgres@db/transactions_api_dev"
+      SECRET_KEY_BASE: "Yolr9RWhFWMi+1nGjqyee9MDi4zQ2dK8g/5pZiq3a1vr6JBUuAOEe9U2DCF7lpLH" 
+    networks:
+      - transactions_network
+
+networks:
+  transactions_network:
+
+volumes:
+  postgres_data:
